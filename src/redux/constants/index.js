@@ -1,6 +1,8 @@
 import keyMirror from 'key-mirror';
 
 
-export default {
-    RECEIVED_CURRENT_USER:null
-}
+export default keyMirror({
+    RECEIVED_CURRENT_USER:null,
+    APPLICATION_IS_FETCHING: null,
+    APPLICATION_FINISH_FETCHING: null
+})

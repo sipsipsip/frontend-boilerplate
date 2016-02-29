@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import * as actions from '../../redux/actions'
-import Loading from '../../components/Loading.react'
 
 class Unauthorized extends Component{
     render(){
@@ -22,14 +21,15 @@ class AdminView extends Component{
     }
     
     render(){
-        let { currentUser } = this.props
+        let { currentUser, global } = this.props
         let roles = currentUser.role_ids || [];
 
         if(roles.indexOf(1) < 0){
             return <Unauthorized/>
         }
+
+        console.log(this.props);
         return <div style={{textAlign: 'center'}}>
-                <Loading show={true}/>
                 <h2> Welcome <small> Administrator {currentUser.nama}</small></h2>
             </div>
     }
@@ -46,6 +46,7 @@ AdminView.defaultProps = {
 function mapStateToProps(state){
     return {
         currentUser: state.user,
+        global: state.global
     }
 }
 

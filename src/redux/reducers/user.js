@@ -15,6 +15,7 @@ export default function(state = initialState, action){
             let currentUser = payload.user;
                 currentUser = assign({}, currentUser, {role_ids: roles});
                 nstate = assign({}, state, currentUser);
+
             return nstate;
         break;
 

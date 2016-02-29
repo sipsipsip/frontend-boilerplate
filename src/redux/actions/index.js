@@ -11,6 +11,17 @@ function receivedCurrentUser(user){
 }
 
 
+function applicationIsFetching(){
+    return {
+        type: constants.APPLICATION_IS_FETCHING,
+    }
+}
+
+function applicationFinishFetching(){
+    return {
+        type: constants.APPLICATION_FINISH_FETCHING,
+    }
+}
 
 
 /*
@@ -19,11 +30,15 @@ function receivedCurrentUser(user){
 
 export function getCurrentUser(){
     return (dispatch) => {
+        dispatch(applicationIsFetching())
         return $.ajax({
             method: 'GET',
             url: config.api.main.host + '/users/current',
             success: (user) => {
-                dispatch(receivedCurrentUser(user));
+                setTimeout(function(){
+                    dispatch(receivedCurrentUser(user));
+                    dispatch(applicationFinishFetching());
+                }, 5000)
             }
         });
     }

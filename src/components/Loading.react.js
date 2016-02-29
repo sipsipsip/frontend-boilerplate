@@ -10,9 +10,17 @@ class Loading extends Component{
     render(){
         return <div>
             <div
-                style={{width: '50px', height: '10px', display: ( this.props.show ? 'inline-block' : 'none'), textAlign: 'center'}}
+                style={{
+                    width: '70',
+                    height: '10px',
+                    display: ( this.props.show ? 'inline-block' : 'none'),
+                    textAlign: 'center',
+                    position: ( this.props.fixed ? 'fixed' : ''),
+                    top: '70px',
+                    right: '10px'
+                    }}
                 >
-                <Spinner spinnerName="rotating-plane" noFadeIn/>
+                <Spinner spinnerName="three-bounce" noFadeIn/>
             </div>
 
             </div>
@@ -24,7 +32,8 @@ Loading.propTypes = {
 }
 
 Loading.defaultProps = {
-    show: true
+    show: true,
+    fixed: false
 }
 
 export default Loading
