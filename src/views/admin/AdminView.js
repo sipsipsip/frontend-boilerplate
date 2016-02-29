@@ -24,7 +24,11 @@ class AdminView extends Component{
         let { currentUser, global } = this.props
         let roles = currentUser.role_ids || [];
 
-        if(roles.indexOf(1) < 0){
+        if(global.isFetching){
+            return <div></div>
+        }
+
+        if(roles.indexOf(1)){
             return <Unauthorized/>
         }
 
