@@ -1,7 +1,7 @@
 import React, {Component } from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import BaseLayout from '../layouts/Calculator'
+import BaseLayout from '../layouts/Base'
 import HomeView from '../views/HomeView'
 import AboutView from '../views/AboutView'
 import AdminView from '../views/admin/AdminView'
