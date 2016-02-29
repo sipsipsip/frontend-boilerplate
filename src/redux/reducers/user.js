@@ -1,6 +1,6 @@
 import constants from '../constants/index'
 import assign from 'object-assign'
-
+import _ from 'lodash'
 
 let initialState = {}
 
@@ -10,7 +10,10 @@ export default function(state = initialState, action){
     let nstate = {}
     switch(type){
         case constants.RECEIVED_CURRENT_USER:
-            nstate = assign({}, state, payload.user);
+            let roles = _.pluck(payload.user.roles, 'id')
+            let currentUser = payload.user;
+                currentUser = assign({}, currentUser, {role_ids: roles});
+                nstate = assign({}, state, currentUser);
             return nstate;
         break;
 
