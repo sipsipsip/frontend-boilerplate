@@ -8,15 +8,12 @@ class HomeView extends Component{
     constructor(props){
         super(props)
     }
-   
-    componentDidMount(){
-        this.props.dispatch(actions.getCurrentUser());
-    }
+
     
     render(){
         let { currentUser } = this.props
         return <div style={{textAlign: 'center'}}>
-                <h3>{currentUser.nama} <small>{ currentUser.hasOwnProperty('roles') ? currentUser.roles[0].title : ''}</small></h3>
+                <h3>{currentUser.nama} <small>{ currentUser.hasOwnProperty('roles') && currentUser.roles.length ? currentUser.roles[0].title : ''}</small></h3>
             </div>
     }
 }
