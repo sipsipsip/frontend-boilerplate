@@ -17,7 +17,7 @@ class HomeView extends Component{
         let { currentUser } = this.props
         console.log(this.props)
         return <div>
-            {currentUser.name}
+            {currentUser.nama}
             </div>
     }
 }
