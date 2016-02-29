@@ -17,7 +17,7 @@ class HomeView extends Component{
         let { currentUser } = this.props
         console.log(this.props)
         return <div style={{textAlign: 'center'}}>
-                <h3>{currentUser.nama} <small>{currentUser.roles[0].title}</small></h3>
+                <h3>{currentUser.nama} <small>{ currentUser.hasOwnProperty('roles') ? currentUser.roles[0].title : ''}</small></h3>
             </div>
     }
 }
