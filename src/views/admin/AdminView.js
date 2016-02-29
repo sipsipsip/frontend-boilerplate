@@ -13,8 +13,9 @@ class AdminView extends Component{
     }
     
     render(){
+        let { currentUser } = this.props
         return <div>
-                Welcome Admin {this.props.currentUser.nama} - {this.props.currentUser.role_ids[0]}
+                Welcome Admin {currentUser.nama} : ids = {currentUser.hasOwnProperty('role_ids') ? currentUser.role_ids[0] : 'Non Admin Leave!'}
             </div>
     }
 }
