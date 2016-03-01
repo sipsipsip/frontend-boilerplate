@@ -13,6 +13,7 @@ class BaseLayout extends Component{
 
     componentDidMount(){
         this.props.dispatch(actions.getCurrentUser());
+        this.props.dispatch(actions.getUsersAndAtasan());
     }
 
     render(){
@@ -20,7 +21,7 @@ class BaseLayout extends Component{
             <div style={{textAlign:'center'}}>
                 <Loading show={this.props.global.isFetching}/>
             </div>
-            {this.props.global.isFetching ? '' : this.props.children}
+            {this.props.children}
             </div>
     }
 }

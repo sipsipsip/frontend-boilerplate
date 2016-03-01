@@ -16,11 +16,18 @@ class AdminView extends Component{
         super(props)
     }
 
+    componentDidMount(){
+        this.props.dispatch(actions.getCurrentUser());
+    }
     
     render(){
 
         let { currentUser, global } = this.props
         let roles = currentUser.role_ids || [];
+
+        if(global.isFetching){
+            return <div></div>
+        }
 
         if(roles.indexOf(1)){
             return <Unauthorized/>
@@ -31,6 +38,7 @@ class AdminView extends Component{
                 <button onClick={()=> {this.props.dispatch(actions.setFetchingForMs())}}>
                     set applicationIsFetching
                 </button>
+                {this.props.children}
             </div>
     }
 }

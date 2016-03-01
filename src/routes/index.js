@@ -5,6 +5,7 @@ import BaseLayout from '../layouts/Base'
 import HomeView from '../views/HomeView'
 import AboutView from '../views/AboutView'
 import AdminView from '../views/admin/AdminView'
+import ManagePegawaiAtasan from '../views/admin/ManagePegawaiAtasan'
 
 
 
@@ -13,7 +14,7 @@ export default (
         <IndexRoute component={HomeView} />
         <Route path="/about" component={AboutView} />
         <Route path="/admin" component={AdminView}>
-
+            <Route path="/admin/manage-pegawai-atasan" component={ManagePegawaiAtasan} />
         </Route>
     </Route>
 )

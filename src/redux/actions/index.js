@@ -23,6 +23,13 @@ function applicationFinishFetching(){
     }
 }
 
+function receivedUserAndAtasan(data){
+    return {
+        type: constants.RECEIVED_USERS_AND_ATASAN,
+        payload: {users: data}
+    }
+}
+
 
 /*
  ** THUNK ACTION
@@ -52,5 +59,26 @@ export function setFetchingForMs(num = 4000){
         setTimeout(()=>{
             dispatch(applicationFinishFetching())
         }, num)
+    }
+}
+
+
+export function getUsersAndAtasan(){
+    return dispatch => {
+        dispatch(applicationIsFetching());
+        return $.ajax({
+            method: 'GET',
+            url: config.api.main.v2.host + '/pegawai?with=jabatan_pegawai.supervisor.pemegang',
+            success: (users) => {
+                setTimeout(()=>{
+                    dispatch(receivedUserAndAtasan(users));
+                    dispatch(applicationFinishFetching());
+                }, 5000)
+            },
+            error: (reason) => {
+                console.log('error');
+                dispatch(applicationFinishFetching());
+            }
+        });
     }
 }
