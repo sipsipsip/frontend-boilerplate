@@ -12,8 +12,9 @@ class ManagePegawaiAtasan extends Component{
     }
     
     render(){
+        let { global, currentUser } = this.props;
         return <div>
-
+                {global.hasOwnProperty('users_and_atasan') ? global.users_and_atasan.data.length : 'should display length'}
             </div>
     }
 }

@@ -21,7 +21,14 @@ export default function global(state = initialState, action){
         nstate = assign({}, state, {isFetching: false});
         return nstate;
         break;
+
+        case constants.RECEIVED_USERS_AND_ATASAN:
+        nstate = assign({}, state, {users_and_atasan: payload.users})
+        return nstate;
+        break;
         default:
+
+
     }
     return state;
 }
