@@ -6,6 +6,9 @@ import rootReducer from './rootReducer'
 
 
 export default function configureStore(initialState){
-    let store = compose(applyMiddleware(thunk))(createStore)(rootReducer, initialState)
+    let store = compose(
+                    applyMiddleware(thunk),
+                    window.devToolsExtension ? window.devToolsExtension() : f => f
+                    )(createStore)(rootReducer, initialState)
     return store
 }

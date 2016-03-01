@@ -18,6 +18,7 @@ class AdminView extends Component{
 
     
     render(){
+
         let { currentUser, global } = this.props
         let roles = currentUser.role_ids || [];
 
@@ -25,9 +26,11 @@ class AdminView extends Component{
             return <Unauthorized/>
         }
 
-        console.log(this.props);
         return <div style={{textAlign: 'center'}}>
                 <h2> Welcome <small> Administrator {currentUser.nama}</small></h2>
+                <button onClick={()=> {this.props.dispatch(actions.setFetchingForMs())}}>
+                    set applicationIsFetching
+                </button>
             </div>
     }
 }

@@ -43,3 +43,14 @@ export function getCurrentUser(){
         });
     }
 }
+
+export function setFetchingForMs(num = 4000){
+    return (dispatch) => {
+        dispatch(applicationIsFetching()
+        );
+
+        setTimeout(()=>{
+            dispatch(applicationFinishFetching())
+        }, num)
+    }
+}
